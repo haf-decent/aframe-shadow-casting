@@ -1,7 +1,7 @@
 AFRAME.registerComponent('shadow-light', {
     schema: {
-        type: { type: 'string', default: 'directional' },
-        intensity: { type: 'float', default: 0.5 },
+        type: { type: 'string', default: 'directional', oneOf: [ 'directional', 'spot' ] },
+        intensity: { type: 'float', default: 0.5, min: 0 },
         color: { type: 'color', default: 'white' },
         angle: { type: 'float', default: -Math.PI/5 },
         near: { type: 'float', default: 1 },
@@ -47,7 +47,7 @@ AFRAME.registerComponent('shadow-light', {
 AFRAME.registerComponent('shadow-plane', {
     schema: {
         dimensions: { type: 'vec2', default: { x: 100, y: 100 } },
-        opacity: { type: 'float', default: 0.2 }
+        opacity: { type: 'float', default: 0.2, min: 0, max: 1 }
     },
     init() {
         const { el, data: { dimensions, opacity } } = this;
