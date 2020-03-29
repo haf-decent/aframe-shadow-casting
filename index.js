@@ -58,7 +58,8 @@ AFRAME.registerComponent('shadow-plane', {
         const plane = new THREE.Mesh(planeGeometry, planeMaterial);
         plane.position.y = 0;
         plane.receiveShadow = true;
-        el.setObject3D(plane);
+        // el.setObject3D(plane);
+        el.object3D.add(plane);
     }
 });
 
