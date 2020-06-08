@@ -12,35 +12,36 @@ AFRAME.registerComponent('shadow-light', {
         helper: { type: 'boolean', default: false }
     },
     init() {
-        const { data, el } = this;
+        const { el, data: { type, color, intensity, angle, bias, mapSize, near, far, tlrb, helper } } = this;
         const { object3D: scene } = el.sceneEl;
 
-        const light = data.type == 'directional' ? 
-            new THREE.DirectionalLight(data.color, data.intensity):
-            new THREE.SpotLight(data.color, data.intensity);
-        light.angle = data.angle;
+        const light = type == 'directional' ? 
+            new THREE.DirectionalLight(color, intensity):
+            new THREE.SpotLight(color, intensity);
+        light.angle = angle;
         
-        light.shadow.bias = data.bias;
-        light.shadow.mapSize.width = data.mapSize.x;
-        light.shadow.mapSize.height = data.mapSize.y;
+        light.shadow.bias = bias;
+        light.shadow.mapSize.width = mapSize.x;
+        light.shadow.mapSize.height = mapSize.y;
 
-        light.shadow.camera.near = data.near;
-        light.shadow.camera.far = data.far;
-        const tlrb = Object.values(data.tlrb)
-            .map(function(a) { return parseFloat(a) });
-        light.shadow.camera.top = tlrb[0];
-        light.shadow.camera.left = tlrb[1];
-        light.shadow.camera.right = tlrb[2];
-        light.shadow.camera.bottom = tlrb[3];
+        light.shadow.camera.near = near;
+        light.shadow.camera.far = far;
+        const [ top, left, right, bottom ] = Object.values(tlrb).map(function(a) { return parseFloat(a) });
+        light.shadow.camera.top = top;
+        light.shadow.camera.left = left;
+        light.shadow.camera.right = right;
+        light.shadow.camera.bottom = bottom;
 
         light.castShadow = true;
         el.setObject3D('light', light);
 
-        if (data.helper) {
+        if (helper) {
             this.helper = new THREE.CameraHelper(light.shadow.camera);
             scene.add(this.helper);
         }
         this.light = light;
+
+        // el.sceneEl.renderer.shadowMap.enabled = true;
     }
 });
 
@@ -59,6 +60,8 @@ AFRAME.registerComponent('shadow-plane', {
         plane.position.y = 0;
         plane.receiveShadow = true;
         el.setObject3D('mesh', plane);
+
+        // el.sceneEl.renderer.shadowMap.enabled = true;
     }
 });
 
@@ -70,4 +73,4 @@ window.addEventListener('load', function() {
     }
     if (window.XR8) onxrloaded();
     else window.addEventListener('xrloaded', onxrloaded);
-})
+});
