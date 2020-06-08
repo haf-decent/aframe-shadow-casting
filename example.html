@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Shadow Plane Example</title>
+        <style></style>
+        <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+        <script src="index.js"></script>
+    </head>
+    <body>
+        <a-scene light="defaultLightsEnabled: false">
+            <a-light type="ambient" intensity="0.5" castShadow="false"></a-light>
+            <a-shadow-light 
+                type="spot"
+                far="18"
+                target="0 0 -5"
+                mapsize="4096 4096"
+                position="0 16 -5">
+            </a-shadow-light>
+            <a-shadow-plane
+                dimensions="10 10" 
+                position="0 0 -5">
+            </a-shadow-plane>
+            <a-sphere
+                id="ball"
+                radius="1" 
+                position="0 2 -5"
+                material="color: red"
+                animation__pos="property: position; from: 0 2 -5; to: 0 3 -5; loop: true; dur: 1500; dir: alternate; easing: easeInOutSine"
+                shadow="receive: false">
+            </a-sphere>
+        </a-scene>
+        <script>
+            window.addEventListener('load', function() {
+                // you can access the THREE.Light object from the shadow-light element
+                var lightEl = document.querySelector('a-shadow-light');
+                console.log(lightEl.shadowLight);
+            });
+        </script>
+    </body>
+</html>
