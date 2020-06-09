@@ -12,33 +12,33 @@ Working on it - for now, just copy and paste.
 ## How to Use
 Once installed in your project, you can either add the custom element tags directly or use the components on other AFRAME entities:
 
-    ...
+```html
+<a-shadow-light
+    id="spot-light-primitive"
+    type="spot"
+    mapsize="2048 2048"
+    far="20">
+</a-shadow-light>
+<a-entity
+  id="directional-light-entity"
+  shadow-light="type: directional; intensity: 0.8; helper: true">
+</a-entity>
     
-    <a-shadow-light
-        id="spot-light-primitive"
-        type="spot"
-        mapsize="2048 2048"
-        far="20">
-    </a-shadow-light>
-    <a-entity
-      id="directional-light-entity"
-      shadow-light="type: directional; intensity: 0.8; helper: true">
-    </a-entity>
-    
-    <a-shadow-plane
-        id="shadow-plane-primitive
-        dimensions="20 20">
-    </a-shadow-plane>
-    <a-entity
-      id="shadow-plane-entity"
-      shadow-plane="opacity: 0.4">
-    </a-entity>
-    
-    ...
+<a-shadow-plane
+    id="shadow-plane-primitive
+    dimensions="20 20">
+</a-shadow-plane>
+<a-entity
+  id="shadow-plane-entity"
+  shadow-plane="opacity: 0.4">
+</a-entity>
+```
     
 The shadow-light component creates a directional or spot light in the scene that casts shadows with a configurable shadow camera. The shadow-plane component creates a ground plane that receives shadows. Make sure you add the `shadow` component to any objects in your scene that you want to cast shadows:
 
-`<a-entity gltf-model="#myModel" shadow="receive: false"></a-entity>`
+```html
+<a-entity gltf-model="#myModel" shadow="receive: false"></a-entity>
+```
 
 
 ## Configuration
@@ -60,7 +60,12 @@ The shadow-light component creates a directional or spot light in the scene that
 
 You also have the ability to access the light directly through its element using the `shadowLight` property. This can be helpful for setting other attributes of the light that aren't included in the component - like the angle of a spotlight
 
-`document.querySelector('a-shadow-light').shadowLight.angle = Math.PI/2;`
+```javascript
+var spotlight = document.querySelector('a-shadow-light');
+spotlight.shadowLight.angle = Math.PI/2;
+```
+You can find all properties of [Directional](https://threejs.org/docs/#api/en/lights/DirectionalLight) and [Spot](https://threejs.org/docs/#api/en/lights/SpotLight) Lights in the THREEjs documentation.
+
 
 ### shadow-plane
 | Property   | type    | default                      | constraints                                                        | description                                                                                                              |
@@ -69,11 +74,11 @@ You also have the ability to access the light directly through its element using
 | opacity    | float   | 0.2                          | 0-1                                                                | Opacity of shadow                                                                                                       |
 
 ## Example
-You'll find an example webpage (creatively named 'example.html') that you can reference. It creates a simple scene with a levitating ball casting a shadow on the ground. 
+In this repo, you'll find an example webpage (creatively named 'example.html') that you can reference. It creates a simple scene with a levitating ball casting a shadow on the ground. 
 
 ![example gif](https://github.com/haf-decent/aframe-shadow-casting/blob/master/example_loop.gif?raw=true)
 
-It's not all that impressive considering you can't tell if the shadow-plane is actually transparent or not, so if you'd like to see an AR application, you can check out [this link](https://www.instagram.com/p/CAxExG9naGB/?igshid=1oowqiukewn05)
+It's not all that impressive considering you can't tell if the shadow-plane is actually transparent or not, so if you'd like to see an AR application, you can check out a video of an 8th Wall WebAR experience I created [here](https://www.instagram.com/p/CAxExG9naGB/?igshid=1oowqiukewn05)
 
 
 ## Enjoy
