@@ -42,10 +42,10 @@ AFRAME.registerComponent('shadow-light', {
                     break;
                 case 'tlrb':
                     const [ t, l, r, b ] = Object.values(this.data.tlrb).map(parseFloat);
-                    this.light.shadow.camera.top = top;
-                    this.light.shadow.camera.left = left;
-                    this.light.shadow.camera.right = right;
-                    this.light.shadow.camera.bottom = bottom;
+                    this.light.shadow.camera.top = t;
+                    this.light.shadow.camera.left = l;
+                    this.light.shadow.camera.right = r;
+                    this.light.shadow.camera.bottom = b;
                     break;
                 case 'mapsize':
                     const { x: w, y: h } = this.data.mapsize;
@@ -97,11 +97,11 @@ AFRAME.registerComponent('shadow-light', {
 
         light.shadow.camera.near = near;
         light.shadow.camera.far = far;
-        const [ top, left, right, bottom ] = Object.values(tlrb).map(parseFloat);
-        light.shadow.camera.top = top;
-        light.shadow.camera.left = left;
-        light.shadow.camera.right = right;
-        light.shadow.camera.bottom = bottom;
+        const [ t, l, r, b ] = Object.values(tlrb).map(parseFloat);
+        light.shadow.camera.top = t;
+        light.shadow.camera.left = l;
+        light.shadow.camera.right = r;
+        light.shadow.camera.bottom = b;
 
         light.castShadow = true;
         this.el.setObject3D('light', light);
