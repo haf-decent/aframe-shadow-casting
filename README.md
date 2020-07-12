@@ -10,6 +10,8 @@ It includes two components - shadow-light and shadow-plane - and two primitives 
 `npm i aframe-shadow-casting`
 
 ## How to Use
+You can add the components/primitives to your page by requiring it in a webpacked module `require('aframe-shadow-casting')`. It must be included after AFRAME and THREE.js.
+
 Once installed in your project, you can either add the custom element tags directly or use the components on other AFRAME entities:
 
 ```html
