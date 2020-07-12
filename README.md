@@ -76,7 +76,7 @@ You can find all properties of [Directional](https://threejs.org/docs/#api/en/li
 ## Example
 In this repo, you'll find an example webpage (creatively named 'example.html') that you can reference. It creates a simple scene with a levitating ball casting a shadow on the ground. 
 
-![example gif](https://github.com/haf-decent/aframe-shadow-casting/blob/master/example_loop.gif?raw=true)
+![example gif](https://i.imgur.com/L6TthjW.gif)
 
 It's not all that impressive considering you can't tell if the shadow-plane is actually transparent or not, so if you'd like to see an AR application, you can check out a video of an 8th Wall WebAR experience I created [here](https://www.instagram.com/p/CAxExG9naGB/?igshid=1oowqiukewn05)
 
