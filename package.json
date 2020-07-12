@@ -1,6 +1,6 @@
 {
   "name": "aframe-shadow-casting",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "AFRAME components & primitives for real-time shadow casting on a transparent ground plane using custom lighting components and THREE.js ShadowMaterial",
   "main": "index.js",
   "scripts": {
