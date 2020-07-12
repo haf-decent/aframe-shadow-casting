@@ -1,0 +1,28 @@
+{
+  "name": "aframe-shadow-casting",
+  "version": "1.0.0",
+  "description": "AFRAME components & primitives for real-time shadow casting on a transparent ground plane using custom lighting components and THREE.js ShadowMaterial",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/haf-decent/aframe-shadow-casting.git"
+  },
+  "keywords": [
+    "AFRAME",
+    "shadow",
+    "transparent",
+    "lighting",
+    "ar",
+    "casting",
+    "real-time"
+  ],
+  "author": "Ryan Hafner (r.hafner20@gmail.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/haf-decent/aframe-shadow-casting/issues"
+  },
+  "homepage": "https://github.com/haf-decent/aframe-shadow-casting#readme"
+}
