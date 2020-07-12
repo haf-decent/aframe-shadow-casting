@@ -122,6 +122,9 @@ AFRAME.registerComponent('shadow-plane', {
     },
     init() {
         this.el.sceneEl.renderer.shadowMap.enabled = true;
+
+        const { opacity } = this.data;
+        this.material = new THREE.ShadowMaterial({ opacity });
     },
     update(oldData) {
         const diff = AFRAME.utils.diff(oldData, this.data);
@@ -129,7 +132,7 @@ AFRAME.registerComponent('shadow-plane', {
             this.remove();
             this._createPlane();
         }
-        else this.material.opacity = this.data.opacity
+        this.material.opacity = this.data.opacity;
     },
     remove() {
         if (!this.plane) return;
@@ -137,11 +140,10 @@ AFRAME.registerComponent('shadow-plane', {
         this.plane = null;
     },
     _createPlane() {
-        const { dimensions: { x: w, y: h }, opacity } = this.data;
+        const { dimensions: { x: w, y: h } } = this.data;
         
         const geo = new THREE.PlaneBufferGeometry(w, h);
         geo.rotateX(-Math.PI/2);
-        this.material = new THREE.ShadowMaterial({ opacity });
         
         this.plane = new THREE.Mesh(geo, this.material);
         this.plane.receiveShadow = true;
