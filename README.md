@@ -7,7 +7,7 @@ I was working on a project using AFRAME and 8th Wall to create a mobile webAR ex
 It includes two components - shadow-light and shadow-plane - and two primitives - `<a-shadow-light>` and `<a-shadow-plane>` - for use in your AFRAME and/or 8th Wall projects. 
 
 ## Installation
-Working on it - for now, just copy and paste.
+`npm i aframe-shadow-casting`
 
 ## How to Use
 Once installed in your project, you can either add the custom element tags directly or use the components on other AFRAME entities:
